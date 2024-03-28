@@ -2,22 +2,30 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
     <CodeSnippet Format="1.0.0">
         <Header>
-            <Title>Test Initialize</Title>			
-			<Author>Craig McLellen</Author>
-			<Description>Called before each test.</Description>
-			<Shortcut>testi</Shortcut>
+            <Title>Test Initialize</Title>
+            <Author>Craig McLellen</Author>
+            <Description>Called before each test.</Description>
+            <Shortcut>testi</Shortcut>
         </Header>
         <Snippet>
             <Code Language="CSharp">
                 <![CDATA[private IFixture _fixture = null!;
+private $SUTType$ _sut = null!;
 
 [TestInitialize]
 public void TestInitialize()
 {
     _fixture = new Fixture().Customize(new AutoMoqCustomization());
-    _sut = _fixture.Create<xxx>();
+    _sut = _fixture.Create<$SUTType$>();
 }]]>
             </Code>
+            <Declarations>
+                <Literal>
+                    <ID>SUTType</ID>
+                    <ToolTip>The system under test type.</ToolTip>
+                    <Default>xxx</Default>
+                </Literal>
+            </Declarations>
         </Snippet>
     </CodeSnippet>
 </CodeSnippets>
